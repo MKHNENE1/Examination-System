@@ -1,89 +1,28 @@
 body {
-    margin: 0;
-    font-family: "Open Sans", sans-serif;
-  }
-  .page-content {
-    background: #75e2e9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .form-v4-content {
-    background: #fff;
-    width: 100%;
-    max-width: 850px;
-    border-radius: 10px;
-    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
-    display: flex;
-    margin: 20px;
-  }
-  .form-left {
-    background: #3786bd;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    color: #fff;
-    padding: 40px;
-  }
-  .form-left h2 {
-    font-weight: 700;
-    font-size: 30px;
-    margin-bottom: 34px;
-  }
-  .form-left p {
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 1.5;
-  }
-  .form-left span {
-    font-weight: 700;
-  }
-  .form-left .btn-account {
-    background: #fff;
-    color: #333;
-    font-weight: 700;
-    border: none;
-    border-radius: 5px;
-    margin-top: 15px;
-  }
-  .form-left .btn-account:hover {
-    background: #e5e5e5;
-  }
-  .form-detail {
-    padding: 40px;
-    flex: 1;
-  }
-  .form-detail h2 {
-    color: #3786bd;
-  }
-  .form-detail label {
-    font-weight: 600;
-    color: #666;
-  }
-  .form-detail input {
-    border-radius: 5px;
-    border: 1px solid #e5e5e5;
-  }
-  .form-detail input:focus {
-    border-color: #53c83c;
-  }
-  .form-checkbox .custom-control-label::before {
-    border: 1px solid #ccc;
-  }
-  .form-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-    border-color: #3786bd;
-    background-color: #3786bd;
-  }
-  .form-checkbox .custom-control-input:checked ~ .custom-control-label::after {
-    background-color: #3786bd;
-  }
-  .btn-register {
-    background: #3786bd;
-    color: #fff;
-    font-weight: 700;
-    border-radius: 5px;
-    border: none;
-  }
-  .btn-register:hover {
-    background: #2f73a3;
-  }
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+.form-v4-content {
+  max-width: 850px;
+  box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+}
+.form-left {
+  border-bottom-left-radius: 10px;
+}
+.form-left p {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+.form-detail input {
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+}
+.form-detail input:focus {
+  border-color: #53c83c;
+}
+
+.btn-register:hover {
+  color: darkblue;
+}

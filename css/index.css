@@ -6,7 +6,6 @@ body {
   margin: 0 auto;
   background: #75e2e9;
   display: flex;
-  display: -flex;
   justify-content: center;
 
   align-items: center;

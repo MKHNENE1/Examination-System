@@ -67,3 +67,5 @@ submit.addEventListener("click", (e) => {
     eError.textContent = "Enter Valid Email";
   }
 });
+
+console.log("hamada");

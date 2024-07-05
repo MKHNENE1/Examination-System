@@ -10,14 +10,14 @@
 <body>
   <div class="page-content  d-flex justify-content-center align-items-center min-vh-100">
     <div class="form-v4-content d-flex flex-column flex-md-row bg-light w-100 rounded-5 m-5">
-      <div class="form-left col-12 col-md-5 d-flex flex-column justify-content-center bg-primary text-light rounded-left-2 rounded-top-2 p-5">
+      <div class="form-left col-12 col-md-5 d-flex flex-column justify-content-center bg-danger text-light rounded-left-2 rounded-top-2 p-5">
         <h2 class="font-weight-bold mb-5 fs-2">INSTRUCTIONS</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nisi debitis quam earum, ab iste sed aliquid molestias, obcaecati, numquam amet impedit dolor laboriosam eveniet! Magnam voluptatibus recusandae magni odio! about the form.</p>
         </div>
       <div class="form-detail col-12 col-md-7 p-4">
-        <h2 class="text-primary">Register Form</h2>
+        <h2 class="text-danger">Register Form</h2>
         <br>
-        <form>
+        <form action="login.html">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="first_name" class="text-dark font-weight-bolder">First Name</label>
@@ -51,10 +51,11 @@
             <input type="password" class="form-control" id="repassword" required/>
             <span class="text-danger fw-bold text-uppercase" id="rp-error">test</span>
           </div>
-          <button type="submit" class="btn btn-register fw-bold text-light rounded-3 bg-danger">Register</button>
+          <button type="submit" id="submit" class="btn btn-register fw-bold text-light rounded-3 bg-danger">Register</button>
         </form>
       </div>
     </div>
   </div>
+  <script src="/js/index.js"></script>
 </body>
 </html>

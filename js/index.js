@@ -1,5 +1,5 @@
 let mkh = console.log;
-
+mkh("test");
 // jQuery.validator.setDefaults({
 //   debug: true,
 //   success: function (label) {

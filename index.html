@@ -1,49 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/bootstrap.css">
-  <link rel="stylesheet" href="./css/index.css">
-</head>
-<body>
-  <div class="page-content">
-    <div class="form-v4-content d-flex flex-column flex-md-row">
-      <div class="form-left col-12 col-md-5 d-flex flex-column justify-content-center">
-        <h2>Welcome</h2>
-        <p>Some introductory text here. <span>More details</span> about the form.</p>
-        <button class="btn btn-account">Sign In</button>
-      </div>
-      <div class="form-detail col-12 col-md-7">
-        <h2>Register Form</h2>
-        <form>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="first_name">First Name</label>
-              <input type="text" class="form-control" id="first_name" required>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body>
+    <div class="page-content">
+      <div class="form-v4-content d-flex flex-column flex-md-row">
+        <div
+          class="form-left col-12 col-md-5 d-flex flex-column justify-content-center"
+        >
+          <h2>Welcome</h2>
+          <p>
+            Some introductory text here. <span>More details</span> about the
+            form.
+          </p>
+          <button class="btn btn-account">Sign In</button>
+        </div>
+        <div class="form-detail col-12 col-md-7">
+          <h2>Register Form</h2>
+          <form action="./login.html" method="get">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="first_name">First Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="first_name"
+                  required
+                />
+                <span class="text-danger fw-bold text-uppercase" id="fn-error"
+                  >test</span
+                >
+              </div>
+              <div class="form-group col-md-6">
+                <label for="last_name">Last Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="last_name"
+                  required
+                />
+                <span class="text-danger fw-bold text-uppercase" id="ln-error"
+                  >test</span
+                >
+              </div>
             </div>
-            <div class="form-group col-md-6">
-              <label for="last_name">Last Name</label>
-              <input type="text" class="form-control" id="last_name" required>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" required />
+              <span class="text-danger fw-bold text-uppercase" id="e-error"
+                >test</span
+              >
             </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" required>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" required>
-          </div>
-          <div class="form-group form-checkbox custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="agree" required>
-            <label class="custom-control-label" for="agree">I agree to the <span class="text-primary">Terms and Conditions</span></label>
-          </div>
-          <button type="submit" class="btn btn-register">Register</button>
-        </form>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                required
+              />
+              <span class="text-danger fw-bold text-uppercase" id="p-error"
+                >test</span
+              >
+            </div>
+            <div class="form-group">
+              <label class="text-capitalize" for="repassword"
+                >Re-Enter password</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="repassword"
+                required
+              />
+              <span class="text-danger fw-bold text-uppercase" id="rp-error"
+                >test</span
+              >
+            </div>
+            <button type="submit" id="submit" class="btn btn-register">
+              Register
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-</body>
+    <script src="./js/index.js"></script>
+  </body>
 </html>

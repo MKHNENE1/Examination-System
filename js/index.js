@@ -1,35 +1,12 @@
-// jQuery.validator.setDefaults({
-//   debug: true,
-//   success: function (label) {
-//     label.attr("id", "valid");
-//   },
-// });
-// $("#myform").validate({
-//   rules: {
-//     password: "required",
-//     comfirm_password: {
-//       equalTo: "#password",
-//     },
-//   },
-//   messages: {
-//     first_name: {
-//       required: "Please enter a firstname",
-//     },
-//     last_name: {
-//       required: "Please enter a lastname",
-//     },
-//     your_email: {
-//       required: "Please provide an email",
-//     },
-//     password: {
-//       required: "Please enter a password",
-//     },
-//     comfirm_password: {
-//       required: "Please enter a password",
-//       equalTo: "Wrong Password",
-//     },
-//   },
-// });
+let nameRegx = /^[A-Za-z ]+$/;
+let emailRegx =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+let fnError = document.getElementById("fn-error"),
+  eError = document.getElementById("e-error"),
+  pError = document.getElementById("p-error"),
+  rpError = document.getElementById("rp-error");
+lnError = document.getElementById("ln-error");
 let firstName = document.getElementById("first_name"),
   lastName = document.getElementById("last_name"),
   email = document.getElementById("email"),
@@ -37,35 +14,61 @@ let firstName = document.getElementById("first_name"),
   repassword = document.getElementById("repassword"),
   submit = document.getElementById("submit");
 
-submit.addEventListener("click", (e) => {
-  errorList = [];
-  let fnError = document.getElementById("fn-error"),
-    lnError = document.getElementById("ln-error"),
-    eError = document.getElementById("e-error"),
-    pError = document.getElementById("p-error"),
-    rpError = document.getElementById("rp-error");
-  // e.preventDefault();
-  // console.log(
-  //   !/^[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,}$/.test(email.value.toLowerCase())
-  // );
-  if (!firstName.value && isFinite(firstName.value)) {
-    e.preventDefault();
-    errorList.push("First Name must be a string");
-    fnError.textContent = "First Name must be a string";
-  }
-  if (lastName.value && isFinite(lastName.value)) {
-    e.preventDefault();
-    errorList.push("Last Name must be a string");
-    lnError.textContent = "Last Name must be a string";
-  }
-  if (
-    !email.value ||
-    !/^[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,}$/.test(email.value.toLowerCase())
-  ) {
-    e.preventDefault();
-    errorList.push("Enter Valid Email");
-    eError.textContent = "Enter Valid Email";
+firstName.addEventListener("change", () => {
+  if (!nameRegx.test(firstName.value)) {
+    fnError.style.display = "block";
+    fnError.textContent = " Please enter Valid First name";
+  } else {
+    fnError.style.display = "none";
+    fnError.textContent = "";
   }
 });
-
-console.log("hamada");
+lastName.addEventListener("change", () => {
+  if (!nameRegx.test(lastName.value)) {
+    lnError.style.display = "block";
+    lnError.textContent = "Please enter Valid Last name";
+  } else {
+    lnError.style.display = "none";
+    lnError.textContent = "";
+  }
+});
+email.addEventListener("change", () => {
+  if (!emailRegx.test(email.value)) {
+    eError.style.display = "block";
+    eError.textContent = "Please enter Valid email address";
+  } else {
+    eError.style.display = "none";
+    eError.textContent = "";
+  }
+});
+password.addEventListener("change", () => {
+  if (password.value.split("").length < 8) {
+    pError.style.display = "block";
+    pError.textContent = "password must be at least 8 chars";
+  } else {
+    pError.style.display = "none";
+    pError.textContent = "";
+  }
+});
+repassword.addEventListener("change", () => {
+  if (repassword.value !== password.value) {
+    rpError.style.display = "block";
+    rpError.textContent = "password does not match";
+  } else {
+    rpError.style.display = "none";
+    rpError.textContent = "";
+  }
+});
+submit.addEventListener("click", (e) => {
+  if (
+    !(
+      rpError.textContent == "" &&
+      pError.textContent == "" &&
+      fnError.textContent == "" &&
+      lnError.textContent == "" &&
+      eError.textContent == ""
+    )
+  ) {
+    e.preventDefault();
+  }
+});

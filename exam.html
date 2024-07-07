@@ -257,11 +257,11 @@
 
     <div id="error"></div>
 
+    <!-- jQuery -->
+    <script src="./js/jquery-3.7.1.js"></script>
     <!-- Bootstrap JS -->
     <script src="./js/bootstrap.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="./js/jquery-3.7.1.js"></script>
     <!-- Result JS -->
     <script>
       function showresult() {
@@ -280,7 +280,7 @@
 
       var steps = $("fieldset").length;
 
-      console.log(steps);
+      // console.log(steps);
       function countresult(resultnumber) {
         $("#step" + resultnumber + " input").each(function () {
           for (var i = 0; i <= correct_answers.length; i++) {
@@ -306,7 +306,7 @@
           );
           $(".prcnt_bar .fill").css("background-color", "rgb(229, 0, 26)");
           $(".result_msg").html(
-            '<img src="assets/images/cross.png" alt="cross"> You Failed!'
+            '<img src="./assets/images/cross.png" alt="cross"> You Failed!'
           );
         } else if (correctprcnt < 80) {
           $(".prcnt_bar_lvl").html("Medium");
@@ -471,5 +471,6 @@
         });
       });
     </script>
+    <script type="module" src="./js/exam.js"></script>
   </body>
 </html>

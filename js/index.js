@@ -32,6 +32,12 @@
 // });
 import { User } from "./user.js";
 import { Cookie } from "./cookies.js";
+
+window.onload = function () {
+  if (Cookie.hasCookie("userData") && Cookie.getCookie("userStatus")) {
+    location.replace("login.html");
+  }
+};
 // history.replaceState(null, "", "login.html");
 let submit = document.getElementById("submit");
 
@@ -87,6 +93,28 @@ submit.addEventListener("click", (e) => {
     // User Data will insert here
     // login.html?first-name=Mohamed&last-name=Halabia&email=mohamedhalabya11%40gmail.com&password=123456789
     e.preventDefault();
+
+    let studint = new User(
+      firstName.value,
+      lastName.value,
+      email.value,
+      password.value
+    );
+    Cookie.setCookie(
+      "userData",
+      JSON.stringify([studint, studint.getPassword()]),
+      new Date("6,10,2025")
+    );
+    Cookie.setCookie("userStatus", true, new Date("6,10,2025"));
+    // sessionStorage.setItem(
+    //   "userData",
+    //   JSON.stringify([studint, studint.getPassword()])
+    // );
+    // console.log(JSON.parse(sessionStorage.getItem("userData")));
+    // history.replaceState(null, "", "login.html");
+    location.replace(`login.html`);
+    // window.open("login.html", "_");
+
     // user = new User(
     //   firstName.value,
     //   lastName.value,
@@ -94,9 +122,7 @@ submit.addEventListener("click", (e) => {
     //   password.value
     // );
     // history.replaceState(null, null, null);
-    location.replace(
-      `index.html?first-name=${firstName.value}&last-name=${lastName.value}&email=${email.value}&password=${password.value}`
-    );
+    // location.replace(`index.html`);
   } else {
     e.preventDefault();
   }
@@ -174,70 +200,140 @@ function validate(ele, cond, errorEle, errorList, errorValue) {
     errorEle.classList.add("d-none");
   }
 }
-if (location.search) {
-  history.replaceState(null, "", `index.html${location.search}`);
-  console.log(location.search);
+// if (location.search) {
+//   history.replaceState(null, "", `index.html${location.search}`);
+//   console.log(location.search);
 
-  firstName.value = location.search.split("&")[0].split("=")[1];
-  lastName.value = location.search.split("&")[1].split("=")[1];
-  email.value = decodeURIComponent(location.search.split("&")[2].split("=")[1]);
-  password.value = decodeURIComponent(
-    location.search.split("&")[3].split("=")[1]
-  );
+//   firstName.value = location.search.split("&")[0].split("=")[1];
+//   lastName.value = location.search.split("&")[1].split("=")[1];
+//   email.value = decodeURIComponent(location.search.split("&")[2].split("=")[1]);
+//   password.value = decodeURIComponent(
+//     location.search.split("&")[3].split("=")[1]
+//   );
 
-  validate(
-    firstName,
-    !/^[a-zA-Z]+$/.test(firstName.value),
-    fnError,
-    errorList,
-    "First Name must be a string"
-  );
-  validate(
-    lastName,
-    !/^[a-zA-Z]+$/.test(lastName.value),
-    lnError,
-    errorList,
-    "Last Name must be a string"
-  );
-  validate(
-    email,
-    !/^[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,}$/.test(email.value.toLowerCase()),
-    eError,
-    errorList,
-    "Enter Valid Email"
-  );
-  validate(
-    password,
-    password.value.length < 8,
-    pError,
-    errorList,
-    "Your Password Less than 8 characters"
-  );
-  if (errorList.length == 0) {
-    let studint = new User(
-      firstName.value,
-      lastName.value,
-      email.value,
-      password.value
-    );
-    Cookie.setCookie(
-      "userData",
-      JSON.stringify([studint, studint.getPassword()]),
-      new Date("6,10,2025")
-    );
-    Cookie.setCookie("userStatus", true, new Date("6,10,2025"));
-    // sessionStorage.setItem(
-    //   "userData",
-    //   JSON.stringify([studint, studint.getPassword()])
-    // );
-    // console.log(JSON.parse(sessionStorage.getItem("userData")));
-    // history.replaceState(null, "", "login.html");
-    location.replace(`login.html`);
-    // console.log("done");
-    // window.open("login.html", "_");
-  } else {
-    window.close();
-    // location.replace(`index.html`);
-  }
-  errorList = [];
-}
+//   validate(
+//     firstName,
+//     !/^[a-zA-Z]+$/.test(firstName.value),
+//     fnError,
+//     errorList,
+//     "First Name must be a string"
+//   );
+//   validate(
+//     lastName,
+//     !/^[a-zA-Z]+$/.test(lastName.value),
+//     lnError,
+//     errorList,
+//     "Last Name must be a string"
+//   );
+//   validate(
+//     email,
+//     !/^[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,}$/.test(email.value.toLowerCase()),
+//     eError,
+//     errorList,
+//     "Enter Valid Email"
+//   );
+//   validate(
+//     password,
+//     password.value.length < 8,
+//     pError,
+//     errorList,
+//     "Your Password Less than 8 characters"
+//   );
+//   if (errorList.length == 0) {
+//     let studint = new User(
+//       firstName.value,
+//       lastName.value,
+//       email.value,
+//       password.value
+//     );
+//     Cookie.setCookie(
+//       "userData",
+//       JSON.stringify([studint, studint.getPassword()]),
+//       new Date("6,10,2025")
+//     );
+//     Cookie.setCookie("userStatus", true, new Date("6,10,2025"));
+//     // sessionStorage.setItem(
+//     //   "userData",
+//     //   JSON.stringify([studint, studint.getPassword()])
+//     // );
+//     // console.log(JSON.parse(sessionStorage.getItem("userData")));
+//     // history.replaceState(null, "", "login.html");
+//     location.replace(`login.html`);
+//     // console.log("done");
+//     // window.open("login.html", "_");
+//   } else {
+//     window.close();
+//     // location.replace(`index.html`);
+//   }
+//   errorList = [];
+// }
+
+//////////////////////////////////////////////////////////////////////////////
+
+// if (location.search) {
+//   history.replaceState(null, "", `index.html${location.search}`);
+//   console.log(location.search);
+
+//   firstName.value = location.search.split("&")[0].split("=")[1];
+//   lastName.value = location.search.split("&")[1].split("=")[1];
+//   email.value = decodeURIComponent(location.search.split("&")[2].split("=")[1]);
+//   password.value = decodeURIComponent(
+//     location.search.split("&")[3].split("=")[1]
+//   );
+
+//   validate(
+//     firstName,
+//     !/^[a-zA-Z]+$/.test(firstName.value),
+//     fnError,
+//     errorList,
+//     "First Name must be a string"
+//   );
+//   validate(
+//     lastName,
+//     !/^[a-zA-Z]+$/.test(lastName.value),
+//     lnError,
+//     errorList,
+//     "Last Name must be a string"
+//   );
+//   validate(
+//     email,
+//     !/^[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,}$/.test(email.value.toLowerCase()),
+//     eError,
+//     errorList,
+//     "Enter Valid Email"
+//   );
+//   validate(
+//     password,
+//     password.value.length < 8,
+//     pError,
+//     errorList,
+//     "Your Password Less than 8 characters"
+//   );
+//   if (errorList.length == 0) {
+//     let studint = new User(
+//       firstName.value,
+//       lastName.value,
+//       email.value,
+//       password.value
+//     );
+//     Cookie.setCookie(
+//       "userData",
+//       JSON.stringify([studint, studint.getPassword()]),
+//       new Date("6,10,2025")
+//     );
+//     Cookie.setCookie("userStatus", true, new Date("6,10,2025"));
+//     // sessionStorage.setItem(
+//     //   "userData",
+//     //   JSON.stringify([studint, studint.getPassword()])
+//     // );
+//     // console.log(JSON.parse(sessionStorage.getItem("userData")));
+//     // history.replaceState(null, "", "login.html");
+//     location.replace(`login.html`);
+//     // console.log("done");
+//     // window.open("login.html", "_");
+//   } else {
+//     window.close();
+//     // location.replace(`index.html`);
+//   }
+//   errorList = [];
+// }

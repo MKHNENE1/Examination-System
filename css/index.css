@@ -3,20 +3,18 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-.page-content{
-  background-image: url("/Examination-Project/assets/bg-01.jpg");
-  background-size: cover;  
+.page-content {
+  background-image: url("../assets/bg-01.jpg");
+  background-size: cover;
 }
 
 .form-v4-content {
-  
   max-width: 850px;
-  box-shadow: 0px 0px 20px  rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
 }
 .form-left {
   border-bottom-left-radius: 10px;
   border-top-left-radius: 10px;
-
 }
 
 .form-left p {
@@ -35,6 +33,6 @@ body {
 .btn-register:hover {
   color: darkblue;
 }
-span{
-  display: none;
+span {
+  /* display: none; */
 }

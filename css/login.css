@@ -1,0 +1,21 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+.bg {
+    background-image: url("/Examination-Project/assets/bg-01.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+.card {
+    height: 70vh; 
+    width: 30vw; 
+    max-height: 600px;
+    max-width: 400px; 
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.815);
+}

@@ -1,9 +1,10 @@
-import { Answers } from "./answers.js";
+import { Answers } from "./answers-test.js";
+
 
 export class Question extends Answers{
     constructor(title,a,b,c,d,e,tf){
         super(a,b,c,d,e);
-        this.question = title,
+        this.title = title,
         this.flag = tf;
     }
 }

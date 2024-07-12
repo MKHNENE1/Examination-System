@@ -1,14 +1,6 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sen:wght@400;500;600;700;800&display=swap"); */
-
-:root {
+* {
   --primary-color: rgb(255, 0, 0);
   --secondary-color: rgb(229, 53, 53);
-}
-
-body {
-  width: 100%;
-  height: auto;
-  position: relative;
 }
 
 main {
@@ -21,6 +13,11 @@ main {
   justify-content: center;
   padding: 50px 0;
 }
+
+.steps-wrapper {
+  position: relative;
+}
+
 .steps {
   border-radius: 20px;
   background-color: rgb(255, 255, 255);
@@ -30,35 +27,21 @@ main {
   padding-top: 80px;
   padding-bottom: 30px;
   position: relative;
-  z-index: 10;
-  transform-style: preserve-3d;
-}
-#step1 .prev {
-  opacity: 0;
-  pointer-events: none;
-}
-.backgroundSlab {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  transform: translateZ(-1px);
-}
-.backgroundSlab::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(209, 18, 27);
-  border-radius: 20px;
   z-index: 1;
-  transform: rotate(-1.5deg);
 }
-.backgroundSlab::after {
+
+.backgroundSlab {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px; /* Match the border-radius of the .steps section */
+  background-color: rgb(209, 18, 27);
+  z-index: 0; /* Ensure it is behind the .steps content */
+}
+
+.backgroundSlab::before {
   content: "";
   position: absolute;
   top: 0;
@@ -67,14 +50,40 @@ main {
   height: 100%;
   background-color: rgb(255, 186, 0);
   border-radius: 20px;
-  z-index: 2;
+  transform: rotate(-1.5deg);
+  z-index: -1;
+}
+
+.backgroundSlab::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(209, 18, 27);
+  border-radius: 20px;
   transform: rotate(1.5deg);
+  z-index: -2;
 }
-.show-section > fieldset {
-  width: 80%;
-  margin: 0 auto;
+
+/* Other CSS remains unchanged */
+
+body {
+  width: 100%;
+  height: auto;
+  position: relative;
 }
-.question {
+
+.question-container {
+  border: 2px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.question-header {
   font-size: 60px;
   color: rgb(0, 0, 0);
   font-weight: bold;
@@ -82,10 +91,47 @@ main {
   width: 90%;
   margin: 0 auto;
 }
+
+.answer-label {
+  display: block;
+  padding: 10px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.answer-label input {
+  margin-right: 10px;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  margin-top: 20px;
+}
+
+.flagged-questions {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.flagged-question-item {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
 .options {
   margin-top: 80px;
   margin-bottom: 15px;
 }
+
 .option {
   width: 44%;
   position: relative;
@@ -94,6 +140,7 @@ main {
   display: grid;
   align-content: center;
 }
+
 .option input {
   -webkit-appearance: none;
   position: absolute;
@@ -105,6 +152,7 @@ main {
   height: 100%;
   cursor: pointer;
 }
+
 .option input::before {
   content: "";
   width: 0;
@@ -122,13 +170,13 @@ main {
   color: rgb(163, 163, 163);
   font-weight: 500;
   position: relative;
-
   display: flex;
   justify-content: start;
   align-items: center;
   height: inherit;
   pointer-events: none;
 }
+
 .option label::before {
   content: "X";
   display: inline-block;
@@ -145,18 +193,23 @@ main {
   transition: 0.5s;
   margin-right: 50px;
 }
+
 .option:nth-child(1) label::before {
   content: "A";
 }
+
 .option:nth-child(2) label::before {
   content: "B";
 }
+
 .option:nth-child(3) label::before {
   content: "C";
 }
+
 .option:nth-child(4) label::before {
   content: "D";
 }
+
 .option input:checked:before {
   width: 100%;
 }
@@ -164,50 +217,154 @@ main {
 .option input:checked ~ label {
   color: rgb(255, 255, 255);
 }
+
 .option input:checked ~ label::before {
   color: rgb(255, 255, 255);
   color: rgb(255, 255, 255);
   background-color: var(--secondary-color);
 }
-.nextPrev {
-  display: flex;
-  align-items: center;
-  gap: 90px;
-  justify-content: center;
-  width: 100%;
-}
-.nextPrev button {
-  font-size: 90px;
-  color: rgb(156, 156, 156);
-  border: 0;
-  background-color: transparent;
-  height: auto;
-  transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-}
-.nextPrev .prev:hover {
-  transform: translateX(-15px);
-}
-.nextPrev .next:hover,
-.nextPrev .apply:hover {
-  transform: translateX(15px);
-}
-.nextPrev .next,
-.nextPrev .apply {
-  color: rgb(242, 171, 0);
-}
-.stepCount {
-  font-size: 56.276px;
-  color: rgb(0, 0, 0);
-}
-.avatar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
+
+.animate {
+  animation: slideLeft 1s forwards cubic-bezier(0.77, 0, 0.175, 1);
+  opacity: 0;
 }
 
-#error {
-  position: fixed;
-  top: 20px;
-  left: 20px;
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
+
+.animateReverse {
+  animation: slideLeftReverse 1s forwards cubic-bezier(0.77, 0, 0.175, 1);
+  opacity: 1;
+}
+
+@keyframes slideLeftReverse {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1500px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .question {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .avatar {
+    display: none;
+  }
+  .show-section > fieldset {
+    width: 90%;
+  }
+  .question {
+    font-size: 40px;
+  }
+  .option {
+    width: 45%;
+  }
+  .option label {
+    font-size: 24px;
+  }
+  .option label::before {
+    margin-right: 25px;
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 992px) {
+  .show-section > fieldset {
+    width: 100%;
+  }
+  .steps {
+    padding: 50px 20px;
+  }
+  .options {
+    margin-top: 40px;
+  }
+  .option label {
+    font-size: 18px;
+  }
+  .option label::before {
+    margin-right: 25px;
+    font-size: 24px;
+  }
+  .option {
+    width: 48%;
+    height: 70px;
+  }
+  .question {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .question {
+    font-size: 30px;
+    width: 100%;
+  }
+  .option label::before {
+    margin-right: 15px;
+    font-size: 24px;
+    width: 50px;
+  }
+  .nextPrev {
+    gap: 50px;
+  }
+  .nextPrev button {
+    font-size: 70px;
+  }
+  .stepCount {
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 576px) {
+}
+
+@media (max-width: 480px) {
+  .question {
+    font-size: 20px;
+  }
+  .option {
+    width: 100%;
+  }
+  .nextPrev {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+  }
+}
+

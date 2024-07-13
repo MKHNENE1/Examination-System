@@ -1,3 +1,4 @@
+import { Cookie } from "./cookies.js";
 var questions = [];
 var currentQuestionIndex = 0;
 var selectedAnswers = {};
@@ -19,6 +20,9 @@ async function getJsonData() {
       };
       questions.push(obj);
     });
+    // console.log(questions);
+    // console.log(randomizeParentObjectValues(questions));
+    questions = randomizeParentObjectValues(questions);
     displayQuestion(currentQuestionIndex);
     startTimer(examDuration);
   } catch (error) {
@@ -26,7 +30,18 @@ async function getJsonData() {
   }
 }
 
-function displayQuestion(index) {
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+function randomizeParentObjectValues(obj) {
+  return shuffleArray(Object.values(obj));
+}
+
+function displayQuestion(index, option = false) {
   var questionnaireDiv = document.getElementById("questionnaire");
   questionnaireDiv.innerHTML = "";
 
@@ -72,7 +87,13 @@ function displayQuestion(index) {
 
   document.getElementById("prev-button").style.display =
     index === 0 ? "none" : "inline-block";
-  document.getElementById("next-button").disabled = !(index in selectedAnswers);
+  if (option == true) {
+    document.getElementById("next-button").disabled = index in selectedAnswers;
+  } else {
+    document.getElementById("next-button").disabled = !(
+      index in selectedAnswers
+    );
+  }
   document.getElementById("next-button").textContent =
     index === questions.length - 1 ? "Submit" : "Next";
 
@@ -127,20 +148,36 @@ function showPreviousQuestion() {
 function toggleFlagQuestion(index) {
   questions[index].flag = !questions[index].flag;
   updateFlaggedQuestionsSidebar();
+  let val = document.querySelector(".flag-button");
+  if (val.textContent == "Flag") {
+    val.textContent = "UnFlag";
+    document.getElementById("next-button").disabled = false;
+  } else {
+    val.textContent = "Flag";
+    document.getElementById("next-button").disabled = true;
+  }
 }
 
 function updateFlaggedQuestionsSidebar() {
-  var sidebar = document.getElementById("flagged-questions");
+  var sidebar = document.getElementById("alerts-container");
   sidebar.innerHTML = "";
   questions.forEach((question, index) => {
     if (question.flag) {
       var card = document.createElement("div");
+      var questionString = document.createElement("p");
+      questionString.classList.add("questionString");
+      questionString.classList.add("m-0");
       card.classList.add("flagged-question-card");
-      card.textContent = question.title;
+      card.classList.add("alert");
+      card.classList.add("alert-warning");
+      // card.setAttribute("role", "alert");
+      questionString.textContent = question.title;
+      card.innerHTML += `<i class="fa-solid fa-circle-exclamation"></i>`;
       card.addEventListener("click", () => {
         currentQuestionIndex = index;
-        displayQuestion(index);
+        displayQuestion(index, true);
       });
+      card.appendChild(questionString);
       sidebar.appendChild(card);
     }
   });
@@ -148,7 +185,9 @@ function updateFlaggedQuestionsSidebar() {
 
 function startTimer(duration) {
   var timerDiv = document.getElementById("time-remaining");
+  var timerBar = document.getElementById("progressBar");
   var minutes, seconds;
+  let bar = duration;
 
   timer = setInterval(function () {
     minutes = parseInt(duration / 60, 10);
@@ -158,7 +197,11 @@ function startTimer(duration) {
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
     timerDiv.textContent = minutes + ":" + seconds;
-
+    // var progressPercentage = (duration - duration) / 60;
+    timerBar.style.width = ((bar - duration) / bar) * 100 + "%";
+    // timerBar.textContent = Math.floor(((bar - duration) / bar) * 100) + "%";
+    // console.log(progressPercentage);
+    // console.log(((bar - duration) / bar) * 100);
     if (--duration < 0) {
       clearInterval(timer);
       showTimeoutPage();
@@ -168,20 +211,31 @@ function startTimer(duration) {
 
 function showResults() {
   clearInterval(timer);
-  document.getElementById("results-screen").classList.remove("d-none");
-  var resultsDiv = document.getElementById("results");
+  // window.removeEventListener("beforeunload", stopReload);
+  // document.getElementById("results-screen").classList.remove("d-none");
+  // var resultsDiv = document.getElementById("results");
   var correctAnswers = 0;
-
+  // console.log(questions.length);
   questions.forEach((question, index) => {
     var selectedAnswerLabel = selectedAnswers[index];
     var correctAnswerLabel = question.answer;
-    console.log(selectedAnswerLabel, correctAnswerLabel);
+    // console.log(selectedAnswerLabel, correctAnswerLabel);
     if (selectedAnswerLabel === correctAnswerLabel) {
       correctAnswers++;
     }
   });
+  // console.log(correctAnswers, questions.length);
 
-  resultsDiv.textContent = `You answered ${correctAnswers} out of ${questions.length} questions correctly.`;
+  // resultsDiv.textContent = `You answered ${correctAnswers} out of ${questions.length} questions correctly.`;
+  // resultsDiv.textContent = `${correctAnswers}%`;
+  let userData = JSON.parse(Cookie.getCookie("userData"));
+  // console.log(userData[0].grads);
+  // console.log((userData[0].degree = correctAnswers));
+  userData[0].grades = Object.values(selectedAnswers);
+  userData[0].degree = correctAnswers;
+  console.log(userData);
+  Cookie.setCookie("userData", JSON.stringify(userData), new Date("10/6/2025"));
+  location.replace("result.html");
 }
 
 function showTimeoutPage() {
@@ -195,8 +249,16 @@ window.onload = function () {
   document
     .getElementById("next-button")
     .addEventListener("click", showNextQuestion);
-  document.getElementById("retry-button").addEventListener("click", () => {
-    location.reload();
-  });
+  // document.getElementById("retry-button").addEventListener("click", () => {
+  //   location.reload();
+  // });
   getJsonData();
 };
+
+// window.addEventListener("beforeunload", (e) => {
+//   e.preventDefault();
+//   e.returnValue = "Changes you made may not be saved";
+// });
+// function stopReload() {
+// }
+// window.addEventListener("load", stopReload);

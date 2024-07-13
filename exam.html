@@ -7,16 +7,31 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css"
+    />
     <link rel="stylesheet" href="./css/exam.css" />
     <title>Questionnaire</title>
   </head>
   <body>
+    <!-- <i class="fa-solid fa-bars"></i> -->
+    <div class="prog">
+      <div class="rounded-pill progressContainer">
+        <div
+          class="text-center text-white rounded-pill progressBar"
+          id="progressBar"
+          style="width: 0%"
+        ></div>
+      </div>
+    </div>
     <main class="overflow-hidden">
       <div class="container">
         <div class="steps-wrapper">
           <div class="backgroundSlab"></div>
           <section class="steps">
-            <div id="time-remaining" class="text-right mb-3"></div>
+            <!-- <progress class="progressBar2" value="20" max="100">0%</progress> -->
+            <div id="time-remaining" class="text-right mb-3 h4"></div>
             <!-- Timer display -->
             <div id="questionnaire"></div>
             <div class="navigation-buttons">
@@ -27,24 +42,28 @@
               >
                 Previous
               </button>
-              <button id="next-button" class="btn btn-primary" disabled>
+              <button id="next-button" class="btn btn-primary px-3" disabled>
                 Next
               </button>
             </div>
-            <div id="flagged-questions-container" class="mt-4">
+            <!-- <div id="flagged-questions-container" class="mt-4">
               <h3>Flagged Questions</h3>
               <ul id="flagged-questions" class="flagged-questions"></ul>
-            </div>
+            </div> -->
           </section>
         </div>
       </div>
     </main>
-    <div id="results-screen" class="d-none">
+    <!-- <div id="results-screen" class="d-none">
       <div class="container">
         <h1>Exam Results</h1>
         <div id="results"></div>
         <button id="retry-button" class="btn btn-primary">Retry</button>
       </div>
+    </div> -->
+    <div class="flaged-questions">
+      <h3 class="px-4 mt-4 text-white">Flaged Questions</h3>
+      <div class="container alerts-container" id="alerts-container"></div>
     </div>
     <script type="module" src="./js/exam.js"></script>
   </body>

@@ -1,9 +1,10 @@
 import { Cookie } from "./cookies.js";
+import { Question } from "./questions.js";
 var questions = [];
 var currentQuestionIndex = 0;
 var selectedAnswers = {};
 var timer;
-var examDuration = 600;
+var examDuration = 100;
 let qsNumber = document.getElementById("questions-number");
 let currentQs = document.getElementById("current-question");
 let userData = JSON.parse(Cookie.getCookie("userData"));
@@ -12,15 +13,24 @@ async function getJsonData() {
     var res = await fetch("./json/questions.json");
     var resp = await res.json();
     resp.forEach(function (el) {
-      var obj = {
-        title: el.question,
-        a: el.A,
-        b: el.B,
-        c: el.C,
-        d: el.D,
-        answer: el.answer,
-        flag: false,
-      };
+      var obj = new Question(
+        el.question,
+        el.A,
+        el.B,
+        el.C,
+        el.D,
+        el.answer,
+        false
+      );
+      // var obj = {
+      //   title: el.question,
+      //   a: el.A,
+      //   b: el.B,
+      //   c: el.C,
+      //   d: el.D,
+      //   answer: el.answer,
+      //   flag: false,
+      // };
       questions.push(obj);
     });
     // console.log(randomizeParentObjectValues(questions));
@@ -142,9 +152,9 @@ function showNextQuestion() {
     currentQs.textContent = currentQuestionIndex + 1;
     displayQuestion(currentQuestionIndex);
   } else {
-    userData[0].grades = [];
+    userData[0].result = [];
     showResults();
-    console.log(userData[0].grades);
+    // console.log(userData[0].grades);
   }
   // console.log(questions.length);
 }
@@ -235,7 +245,7 @@ function showResults() {
       correctAnswers++;
     } else {
       // userData[0].grades.push(`${question.title} :  ${selectedAnswerLabel}`);
-      userData[0].grades.push([
+      userData[0].result.push([
         question.title,
         correctAnswerLabel,
         selectedAnswerLabel,
@@ -246,12 +256,15 @@ function showResults() {
 
   // resultsDiv.textContent = `You answered ${correctAnswers} out of ${questions.length} questions correctly.`;
   // resultsDiv.textContent = `${correctAnswers}%`;
-  userData[0].degree = correctAnswers;
-  console.log(userData);
+  userData[0].degree = `${((correctAnswers / questions.length) * 100).toFixed(
+    1
+  )}%`;
+  // console.log(questions.length);
+  // console.log(Math.fround(correctAnswers / questions.length) * 100);
   // console.log(userData[0].grads);
   // console.log((userData[0].degree = correctAnswers));
   Cookie.setCookie("userData", JSON.stringify(userData), new Date("10/6/2025"));
-  // location.replace("result.html");
+  location.replace("result.html");
 }
 
 function showTimeoutPage() {
@@ -259,6 +272,9 @@ function showTimeoutPage() {
 }
 
 window.onload = function () {
+  if (!Cookie.hasCookie("userData") && !Cookie.getCookie("userStatus")) {
+    location.replace("index.html");
+  }
   document
     .getElementById("prev-button")
     .addEventListener("click", showPreviousQuestion);

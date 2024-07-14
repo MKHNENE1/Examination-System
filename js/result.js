@@ -1,3 +1,8 @@
+window.onload = function () {
+  if (!Cookie.hasCookie("userData") && !Cookie.getCookie("userStatus")) {
+    location.replace("index.html");
+  }
+};
 import { Cookie } from "./cookies.js";
 console.log(JSON.parse(Cookie.getCookie("userData")));
 let obj = JSON.parse(Cookie.getCookie("userData"));

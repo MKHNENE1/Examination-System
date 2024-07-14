@@ -1,4 +1,4 @@
-import { Answers } from "./answers-test.js";
+import { Answers } from "./answers.js";
 
 export class Question extends Answers {
   constructor(title, a, b, c, d, e, tf) {

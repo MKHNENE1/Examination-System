@@ -1,11 +1,11 @@
 export class User {
   #password;
-  constructor(firstName, lastName, email, password, grades = [], degree = 0) {
+  constructor(firstName, lastName, email, password, res = [], degree = 0) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
     this.#password = password;
-    this.grades = grades;
+    this.result = result;
     this.degree = degree;
   }
   getPassword() {

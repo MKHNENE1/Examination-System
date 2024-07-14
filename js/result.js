@@ -1,5 +1,5 @@
 // import { User } from "./user.js";
-// import { Questions } from "./questions.js";
+import { Question } from "./questions.js";
 
 import { Cookie } from "./cookies.js";
 console.log(JSON.parse(Cookie.getCookie("userData")));

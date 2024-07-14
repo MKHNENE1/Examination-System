@@ -4,6 +4,9 @@ var currentQuestionIndex = 0;
 var selectedAnswers = {};
 var timer;
 var examDuration = 600;
+let qsNumber = document.getElementById("questions-number");
+let currentQs = document.getElementById("current-question");
+let userData = JSON.parse(Cookie.getCookie("userData"));
 async function getJsonData() {
   try {
     var res = await fetch("./json/questions.json");
@@ -20,11 +23,15 @@ async function getJsonData() {
       };
       questions.push(obj);
     });
-    // console.log(questions);
     // console.log(randomizeParentObjectValues(questions));
     questions = randomizeParentObjectValues(questions);
     displayQuestion(currentQuestionIndex);
     startTimer(examDuration);
+    qsNumber.textContent = questions.length;
+    currentQs.textContent = currentQuestionIndex + 1;
+    // console.log(questions);
+    // console.log(qsNumber.textContent);
+    // console.log(currentQs.textContent);
   } catch (error) {
     console.error("Error fetching questions:", error);
   }
@@ -132,14 +139,18 @@ function createAnswerOption(answerText, questionName, optionLabel) {
 function showNextQuestion() {
   if (currentQuestionIndex < questions.length - 1) {
     currentQuestionIndex++;
+    currentQs.textContent = currentQuestionIndex + 1;
     displayQuestion(currentQuestionIndex);
   } else {
+    userData[0].grades = [];
     showResults();
+    console.log(userData[0].grades);
   }
+  // console.log(questions.length);
 }
-
 function showPreviousQuestion() {
   if (currentQuestionIndex > 0) {
+    currentQs.textContent = currentQuestionIndex;
     currentQuestionIndex--;
     displayQuestion(currentQuestionIndex);
   }
@@ -222,20 +233,25 @@ function showResults() {
     // console.log(selectedAnswerLabel, correctAnswerLabel);
     if (selectedAnswerLabel === correctAnswerLabel) {
       correctAnswers++;
+    } else {
+      // userData[0].grades.push(`${question.title} :  ${selectedAnswerLabel}`);
+      userData[0].grades.push([
+        question.title,
+        correctAnswerLabel,
+        selectedAnswerLabel,
+      ]);
     }
   });
   // console.log(correctAnswers, questions.length);
 
   // resultsDiv.textContent = `You answered ${correctAnswers} out of ${questions.length} questions correctly.`;
   // resultsDiv.textContent = `${correctAnswers}%`;
-  let userData = JSON.parse(Cookie.getCookie("userData"));
-  // console.log(userData[0].grads);
-  // console.log((userData[0].degree = correctAnswers));
-  userData[0].grades = Object.values(selectedAnswers);
   userData[0].degree = correctAnswers;
   console.log(userData);
+  // console.log(userData[0].grads);
+  // console.log((userData[0].degree = correctAnswers));
   Cookie.setCookie("userData", JSON.stringify(userData), new Date("10/6/2025"));
-  location.replace("result.html");
+  // location.replace("result.html");
 }
 
 function showTimeoutPage() {
@@ -262,3 +278,4 @@ window.onload = function () {
 // function stopReload() {
 // }
 // window.addEventListener("load", stopReload);
+1;

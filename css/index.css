@@ -3,10 +3,10 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-.page-content {
+/* .page-content {
   background-image: url("../assets/bg-01.jpg");
   background-size: cover;
-}
+} */
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
@@ -16,11 +16,7 @@ body {
   max-width: 850px;
   box-shadow: 0px 8px 20px0px rgba(0, 0, 0, 0.15);
 }
-.form-left {
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
 
-}
 .form-left p {
   font-size: 15px;
   font-weight: 300;

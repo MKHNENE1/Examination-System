@@ -4,7 +4,7 @@ var questions = [];
 var currentQuestionIndex = 0;
 var selectedAnswers = {};
 var timer;
-var examDuration = 100;
+var examDuration = 600;
 let qsNumber = document.getElementById("questions-number");
 let currentQs = document.getElementById("current-question");
 let userData = JSON.parse(Cookie.getCookie("userData"));
@@ -176,6 +176,13 @@ function toggleFlagQuestion(index) {
   } else {
     val.textContent = "Flag";
     document.getElementById("next-button").disabled = true;
+  }
+
+  if(document.getElementById("alerts-container").children.length !== 0){
+    document.querySelector(".flaged-questions").style.display = "block";
+  }else{
+    document.querySelector(".flaged-questions").style.display = "none";
+
   }
 }
 

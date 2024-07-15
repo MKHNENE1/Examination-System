@@ -4,20 +4,22 @@ body, html {
 }
 
 .bg {
-  background-image: url("../assets/bg-01.jpg");
+  /* background-image: url("../assets/bg-01.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center; */
   height: 100%;
+  background-color: rgb(228, 227, 227);
 }
 
 .card {
   width: 80%;
+  height: max-content;
   max-width: 400px;
-  margin: auto;
+  /* margin: auto; */
   padding: 20px;
-  background: #fff;
+  background: rgb(255, 255, 255);
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.815);
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.815); */
 }
 
 @media (min-width: 576px) {

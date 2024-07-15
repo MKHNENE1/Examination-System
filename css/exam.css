@@ -14,7 +14,7 @@
   left: -320px;
   overflow-x: hidden;
   transition: ease 0.5s;
-  /* left: -300px; */
+  display: none;
 }
 /* .flaged-questions:hover {
   left: 0;
@@ -28,7 +28,7 @@ i {
   /* top: 32%; */
 }
 .questionString {
-  width: 85%;
+  width: 77%;
 }
 .alerts-container {
   padding: 20px;

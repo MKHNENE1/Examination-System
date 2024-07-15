@@ -11,20 +11,18 @@
     <div class="container">
       <h1 class="text-center">Exam Results</h1>
       <div class="card">
-        <div class="card-header">Student Information</div>
+        <div class="card-header bg-primary text-light h4">
+          Student Information
+        </div>
         <div class="card-body">
-          <h5 class="card-title" id="userName">Name:</h5>
-          <p class="card-text" id="userEmail">Email:</p>
+          <p class="card-title font-weight-bold" id="userName">Name:</p>
+          <p class="card-text font-weight-bold" id="userGrade">Grade:</p>
         </div>
       </div>
       <div class="table-responsive">
         <h3 class="text-center mt-2">Wrong Answers</h3>
-        <table class="table table-striped table-bordered result-table">
-          <caption class="alert alert-success text-center">
-            <strong class="">Total Percentage:</strong>
-            <span></span>
-          </caption>
-          <thead class="thead-dark">
+        <table class="table table-striped result-table table-hover">
+          <thead class="">
             <tr>
               <th>Question</th>
               <th>Correct Answer</th>

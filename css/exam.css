@@ -5,7 +5,7 @@
 
 .flaged-questions {
   position: fixed;
-  background-color: #b71018;
+  /* background-color: #b71018; */
   width: 400px;
   height: 100vh;
   z-index: 3;
@@ -22,9 +22,9 @@
 i {
   font-size: 30px;
 }
-.fa-circle-exclamation {
+.fa-flag {
   position: absolute;
-  right: 15px;
+  right: 20px;
   /* top: 32%; */
 }
 .questionString {
@@ -71,7 +71,7 @@ main {
   overflow: hidden;
 }
 .progressBar {
-  background-color: #b71018;
+  /* background-color: #b71018; */
   height: 40px;
   display: flex;
   align-items: center;
@@ -109,7 +109,7 @@ main {
   width: 100%;
   height: 100%;
   border-radius: 20px; /* Match the border-radius of the .steps section */
-  background-color: rgb(209, 18, 27);
+  background-color: #007bff;
   z-index: 0; /* Ensure it is behind the .steps content */
 }
 
@@ -133,7 +133,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(209, 18, 27);
+  background-color: #007bff;
   border-radius: 20px;
   transform: rotate(1.5deg);
   z-index: -2;
@@ -232,7 +232,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: var(--primary-color);
+  background-color: #007bff;
   border-radius: inherit;
   transition: 0.5s;
 }
@@ -264,6 +264,8 @@ body {
   font-size: 39px;
   transition: 0.5s;
   margin-right: 50px;
+  position: relative;
+  top: 4px;
 }
 
 .option:nth-child(1) label::before {
@@ -292,13 +294,14 @@ body {
 
 .option input:checked ~ label::before {
   color: rgb(255, 255, 255);
-  color: rgb(255, 255, 255);
-  background-color: var(--secondary-color);
+  /* color: rgb(255, 255, 255); */
+  background-color: #002effab;
 }
 
 .animate {
   animation: slideLeft 1s forwards cubic-bezier(0.77, 0, 0.175, 1);
   opacity: 0;
+  overflow: hidden;
 }
 
 @keyframes slideLeft {

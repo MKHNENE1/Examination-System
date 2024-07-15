@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   height: 100%;
   margin: 0;
 }
@@ -12,7 +13,7 @@ body, html {
 }
 
 .card {
-  width: 80%;
+  width: 90%;
   height: max-content;
   max-width: 400px;
   /* margin: auto; */
@@ -20,22 +21,4 @@ body, html {
   background: rgb(255, 255, 255);
   border-radius: 10px;
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.815); */
-}
-
-@media (min-width: 576px) {
-  .card {
-    width: 60%;
-  }
-}
-
-@media (min-width: 768px) {
-  .card {
-    width: 40%;
-  }
-}
-
-@media (min-width: 992px) {
-  .card {
-    width: 30%;
-  }
 }

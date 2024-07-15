@@ -1,9 +1,9 @@
 body {
-    background-color: #f0f0f0;
-    background-image: url("../assets/bg-01.jpg");
-    background-size: cover;
+  background-color: #f0f0f0;
+  /* background-image: url("../assets/bg-01.jpg"); */
+  /* background-size: cover; */
 }
 
 .timeout-message {
-    border-radius: 10px;
+  border-radius: 10px;
 }

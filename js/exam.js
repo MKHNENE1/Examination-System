@@ -178,11 +178,10 @@ function toggleFlagQuestion(index) {
     document.getElementById("next-button").disabled = true;
   }
 
-  if(document.getElementById("alerts-container").children.length !== 0){
+  if (document.getElementById("alerts-container").children.length !== 0) {
     document.querySelector(".flaged-questions").style.display = "block";
-  }else{
+  } else {
     document.querySelector(".flaged-questions").style.display = "none";
-
   }
 }
 
@@ -200,7 +199,7 @@ function updateFlaggedQuestionsSidebar() {
       card.classList.add("alert-warning");
       // card.setAttribute("role", "alert");
       questionString.textContent = question.title;
-      card.innerHTML += `<i class="fa-solid fa-circle-exclamation"></i>`;
+      card.innerHTML += `<i class="fa-solid fa-flag"></i>`;
       card.addEventListener("click", () => {
         currentQuestionIndex = index;
         displayQuestion(index, true);

@@ -92,33 +92,64 @@ function displayQuestion(index, option = false) {
   optionsDiv.appendChild(option4);
 
   var flagButton = document.createElement("button");
-  flagButton.textContent = el.flag ? "Unflag" : "Flag";
-  flagButton.classList.add("btn", "btn-warning", "flag-button");
+  // flagButton.textContent = el.flag ? "Unflag" : "Flag";
+  flagButton.classList.add(
+    "fa-solid",
+    "fa-bookmark",
+    "border-0",
+    "bg-warning",
+    "text-light",
+    "p-3",
+    "mt-3",
+    "edits",
+    "flag-button"
+  );
   flagButton.addEventListener("click", () => toggleFlagQuestion(index));
 
   fieldset.appendChild(questionHeader);
-  fieldset.appendChild(optionsDiv);
   fieldset.appendChild(flagButton);
+  fieldset.appendChild(optionsDiv);
 
   questionnaireDiv.appendChild(fieldset);
 
   document.getElementById("prev-button").style.display =
     index === 0 ? "none" : "inline-block";
-  if (option == true) {
-    document.getElementById("next-button").disabled = index in selectedAnswers;
+  index !== 0
+    ? (document.querySelector(".navigation-buttons").style.justifyContent =
+        "space-between")
+    : (document.querySelector(".navigation-buttons").style.justifyContent =
+        "flex-end");
+  // if (option == true) {
+  //   document.getElementById("next-button").disabled = index in selectedAnswers;
+  // } else {
+  //   document.getElementById("next-button").disabled = !(
+  //     index in selectedAnswers
+  //   );
+  // }
+  // document.getElementById("next-button").innerHTML =
+  //   index === questions.length - 1
+  //     ? '<i class="fa-solid fa-circle-check"></i>'
+  //     : '<i class="fa-solid fa-circle-arrow-right"></i>';
+  if (index === questions.length - 1) {
+    document.getElementById("next-button").innerHTML =
+      '<i class="fa-solid fa-circle-check"></i>';
+    // console.log("tesst");
+    document
+      .getElementById("next-button")
+      .classList.replace("text-primary", "text-success");
   } else {
-    document.getElementById("next-button").disabled = !(
-      index in selectedAnswers
-    );
+    document.getElementById("next-button").innerHTML =
+      '<i class="fa-solid fa-circle-arrow-right"></i>';
+    document
+      .getElementById("next-button")
+      .classList.replace("text-success", "text-primary");
+    // console.log(document.getElementById("next-button").innerHTML);
   }
-  document.getElementById("next-button").textContent =
-    index === questions.length - 1 ? "Submit" : "Next";
-
   var radioButtons = optionsDiv.querySelectorAll('input[type="radio"]');
   radioButtons.forEach((radio) => {
     radio.addEventListener("change", () => {
       selectedAnswers[index] = radio.value;
-      document.getElementById("next-button").disabled = false;
+      // document.getElementById("next-button").disabled = false;
     });
 
     if (selectedAnswers[index] && radio.value === selectedAnswers[index]) {
@@ -170,12 +201,14 @@ function toggleFlagQuestion(index) {
   questions[index].flag = !questions[index].flag;
   updateFlaggedQuestionsSidebar();
   let val = document.querySelector(".flag-button");
-  if (val.textContent == "Flag") {
-    val.textContent = "UnFlag";
-    document.getElementById("next-button").disabled = false;
+  if (val.classList.contains("fa-bookmark")) {
+    val.classList.remove("fa-bookmark");
+    val.classList.add("fa-bookmark-slash");
+    // document.getElementById("next-button").disabled = false;
   } else {
-    val.textContent = "Flag";
-    document.getElementById("next-button").disabled = true;
+    val.classList.add("fa-bookmark");
+    val.classList.remove("fa-bookmark-slash");
+    // document.getElementById("next-button").disabled = true;
   }
 
   if (document.getElementById("alerts-container").children.length !== 0) {
@@ -265,12 +298,22 @@ function showResults() {
   userData[0].degree = `${((correctAnswers / questions.length) * 100).toFixed(
     1
   )}%`;
+  // console.log(Object.keys(selectedAnswers).length == questions.length);
+  // console.log(questions.length);
   // console.log(questions.length);
   // console.log(Math.fround(correctAnswers / questions.length) * 100);
   // console.log(userData[0].grads);
   // console.log((userData[0].degree = correctAnswers));
-  Cookie.setCookie("userData", JSON.stringify(userData), new Date("10/6/2025"));
-  location.replace("result.html");
+  if (Object.keys(selectedAnswers).length == questions.length) {
+    Cookie.setCookie(
+      "userData",
+      JSON.stringify(userData),
+      new Date("10/6/2025")
+    );
+    location.replace("result.html");
+  } else {
+    alert("Some Questions not answered yet");
+  }
 }
 
 function showTimeoutPage() {

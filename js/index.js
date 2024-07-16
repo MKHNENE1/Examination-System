@@ -1,38 +1,5 @@
-// jQuery.validator.setDefaults({
-//   debug: true,
-//   success: function (label) {
-//     label.attr("id", "valid");
-//   },
-// });
-// $("#myform").validate({
-//   rules: {
-//     password: "required",
-//     comfirm_password: {
-//       equalTo: "#password",
-//     },
-//   },
-//   messages: {
-//     first_name: {
-//       required: "Please enter a firstname",
-//     },
-//     last_name: {
-//       required: "Please enter a lastname",
-//     },
-//     your_email: {
-//       required: "Please provide an email",
-//     },
-//     password: {
-//       required: "Please enter a password",
-//     },
-//     comfirm_password: {
-//       required: "Please enter a password",
-//       equalTo: "Wrong Password",
-//     },
-//   },
-// });
 import { User } from "./user.js";
 import { Cookie } from "./cookies.js";
-// history.replaceState(null, "", "login.html");
 let submit = document.getElementById("submit");
 
 let firstName = document.getElementById("first_name"),
@@ -84,16 +51,8 @@ submit.addEventListener("click", (e) => {
     "Password is not identical"
   );
   if (errorList.length == 0) {
-    // User Data will insert here
-    // login.html?first-name=Mohamed&last-name=Halabia&email=mohamedhalabya11%40gmail.com&password=123456789
     e.preventDefault();
-    // user = new User(
-    //   firstName.value,
-    //   lastName.value,
-    //   email.value,
-    //   password.value
-    // );
-    // history.replaceState(null, null, null);
+
     location.replace(
       `index.html?first-name=${firstName.value}&last-name=${lastName.value}&email=${email.value}&password=${password.value}`
     );
@@ -226,18 +185,10 @@ if (location.search) {
       new Date("6,10,2025")
     );
     Cookie.setCookie("userStatus", true, new Date("6,10,2025"));
-    // sessionStorage.setItem(
-    //   "userData",
-    //   JSON.stringify([studint, studint.getPassword()])
-    // );
-    // console.log(JSON.parse(sessionStorage.getItem("userData")));
-    // history.replaceState(null, "", "login.html");
+
     location.replace(`login.html`);
-    // console.log("done");
-    // window.open("login.html", "_");
   } else {
     window.close();
-    // location.replace(`index.html`);
   }
   errorList = [];
 }

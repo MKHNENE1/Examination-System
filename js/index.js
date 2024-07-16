@@ -143,7 +143,6 @@ repassword.onblur = () => {
 
 function validate(ele, cond, errorEle, errorList, errorValue) {
   if (!ele.value || cond) {
-    // event.preventDefault();
     errorList.push(errorValue);
     errorEle.textContent = errorValue;
     errorEle.classList.remove("d-none");

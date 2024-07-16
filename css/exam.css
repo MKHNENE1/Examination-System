@@ -5,27 +5,22 @@
 
 .flaged-questions {
   position: fixed;
-  /* background-color: #b71018; */
   width: 400px;
   height: 100vh;
   z-index: 3;
-  /* padding: 20px; */
   top: 0;
   left: -320px;
   overflow-x: hidden;
   transition: ease 0.5s;
   display: none;
 }
-/* .flaged-questions:hover {
-  left: 0;
-} */
+
 i {
   font-size: 30px;
 }
 .fa-flag {
   position: absolute;
   right: 20px;
-  /* top: 32%; */
 }
 .questionString {
   width: 77%;
@@ -41,13 +36,11 @@ i {
   cursor: pointer;
 }
 .prog {
-  /* position: absolute; */
   height: 15vh;
 }
 main {
   width: 100%;
   min-height: 85vh;
-  /* background-image: url("../assets/bg-01.jpg"); */
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -59,7 +52,6 @@ main {
   position: fixed;
   left: 50%;
   z-index: 3;
-  /* margin: 10px auto; */
   top: 6%;
   transform: translateX(-50%);
   border: 1px solid gray;
@@ -71,20 +63,12 @@ main {
   overflow: hidden;
 }
 .progressBar {
-  /* background-color: #b71018; */
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-/* .progressBar2 {
-  width: 100%;
-  height: 50px;
-  color: red;
-} */
-/* #time-remaining {
-  margin-top: -20px;
-} */
+
 
 .steps-wrapper {
   position: relative;
@@ -108,9 +92,9 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 20px; /* Match the border-radius of the .steps section */
+  border-radius: 20px; 
   background-color: #007bff;
-  z-index: 0; /* Ensure it is behind the .steps content */
+  z-index: 0; 
 }
 
 .backgroundSlab::before {
@@ -139,7 +123,6 @@ main {
   z-index: -2;
 }
 
-/* Other CSS remains unchanged */
 
 body {
   width: 100%;
@@ -294,7 +277,6 @@ body {
 
 .option input:checked ~ label::before {
   color: rgb(255, 255, 255);
-  /* color: rgb(255, 255, 255); */
   background-color: #002effab;
 }
 

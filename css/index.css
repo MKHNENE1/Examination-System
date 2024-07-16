@@ -4,10 +4,7 @@ body {
   background-color: rgb(228, 227, 227);
 }
 
-/* .page-content {
-  background-image: url("../assets/bg-01.jpg");
-  background-size: cover;
-} */
+
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
@@ -59,13 +56,7 @@ body {
   height: calc(calc(max(9vw, 11vh)) * 1.1);
   margin: calc(calc(max(9vw, 11vh)) * 0.04) calc(calc(max(9vw, 11vh)) * 0.02);
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  /* background: linear-gradient(
-          90deg,
-          rgba(25, 25, 25, 0.7) 50%,
-          rgba(10, 10, 10, 0.85) 50%
-        );
-        background: #181a1b; */
-  background: white;
+
   text-align: center;
   color: rgba(15, 15, 15, 1);
   line-height: calc(calc(max(9vw, 11vh)) * 1.1);

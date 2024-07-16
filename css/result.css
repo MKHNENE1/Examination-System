@@ -4,3 +4,10 @@ body {
 .result-table {
   margin-top: 20px;
 }
+thead tr {
+  background-color: #007bff;
+  color: white;
+}
+tbody tr td:not(:first-child) {
+  text-align: end;
+}

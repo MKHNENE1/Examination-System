@@ -200,6 +200,15 @@ function validate(ele, cond, errorEle, errorList, errorValue) {
     errorEle.classList.add("d-none");
   }
 }
+
+const curser = document.querySelector(".curser");
+document.addEventListener("mousemove", function (e) {
+  let X = e.clientX;
+  let Y = e.clientY;
+  curser.style.left = X + "px";
+  curser.style.top = Y + "px";
+});
+
 // if (location.search) {
 //   history.replaceState(null, "", `index.html${location.search}`);
 //   console.log(location.search);

@@ -1,0 +1,478 @@
+* {
+  --primary-color: rgb(255, 0, 0);
+  --secondary-color: rgb(229, 53, 53);
+}
+
+.flaged-questions {
+  position: fixed;
+  /* background-color: #b71018; */
+  width: 400px;
+  height: 100vh;
+  z-index: 3;
+  /* padding: 20px; */
+  top: 0;
+  left: -320px;
+  overflow-x: hidden;
+  transition: ease 0.5s;
+  display: none;
+}
+/* .flaged-questions:hover {
+  left: 0;
+} */
+i {
+  font-size: 30px;
+}
+.fa-flag {
+  position: absolute;
+  right: 20px;
+  /* top: 32%; */
+}
+.questionString {
+  width: 77%;
+}
+.alerts-container {
+  padding: 20px;
+  position: relative;
+}
+.flagged-question-card {
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.prog {
+  /* position: absolute; */
+  height: 15vh;
+}
+main {
+  width: 100%;
+  min-height: 85vh;
+  /* background-image: url("../assets/bg-01.jpg"); */
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 0;
+}
+.progressContainer {
+  width: 83%;
+  position: fixed;
+  left: 50%;
+  z-index: 3;
+  /* margin: 10px auto; */
+  top: 6%;
+  transform: translateX(-50%);
+  border: 1px solid gray;
+  background-color: rgb(191, 191, 191);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+.progressBar {
+  /* background-color: #b71018; */
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* .progressBar2 {
+  width: 100%;
+  height: 50px;
+  color: red;
+} */
+/* #time-remaining {
+  margin-top: -20px;
+} */
+
+.steps-wrapper {
+  position: relative;
+}
+
+.steps {
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  padding: 50px;
+  padding-top: 80px;
+  padding-bottom: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.backgroundSlab {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px; /* Match the border-radius of the .steps section */
+  background-color: #007bff;
+  z-index: 0; /* Ensure it is behind the .steps content */
+}
+
+.backgroundSlab::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffc107;
+  border-radius: 20px;
+  transform: rotate(-1.5deg);
+  z-index: -1;
+}
+
+.backgroundSlab::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #007bff;
+  border-radius: 20px;
+  transform: rotate(1.5deg);
+  z-index: -2;
+}
+
+/* Other CSS remains unchanged */
+
+body {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.question-container {
+  border: 2px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.question-header {
+  font-size: 60px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.answer-label {
+  display: block;
+  padding: 10px;
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.answer-label input {
+  margin-right: 10px;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  margin-top: 20px;
+}
+
+.flagged-questions {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.flagged-question-item {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+.options {
+  margin-top: 50px;
+  margin-bottom: 15px;
+}
+
+.option {
+  width: 44%;
+  position: relative;
+  height: 101px;
+  margin-bottom: 25px;
+  display: grid;
+  align-content: center;
+}
+
+.option input {
+  appearance: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 50px;
+  background-color: rgb(223, 220, 220);
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.option input::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #007bff;
+  border-radius: inherit;
+  transition: 0.5s;
+}
+
+.option label {
+  font-size: 32px;
+  color: rgb(163, 163, 163);
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: inherit;
+  pointer-events: none;
+}
+
+.option label::before {
+  content: "X";
+  display: inline-block;
+  background-color: rgb(163, 163, 163);
+  width: 88px;
+  height: inherit;
+  display: grid;
+  place-content: center;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  font-size: 39px;
+  transition: 0.5s;
+  margin-right: 50px;
+  position: relative;
+  top: 4px;
+}
+
+.option:nth-child(1) label::before {
+  content: "A";
+}
+
+.option:nth-child(2) label::before {
+  content: "B";
+}
+
+.option:nth-child(3) label::before {
+  content: "C";
+}
+
+.option:nth-child(4) label::before {
+  content: "D";
+}
+
+.option input:checked:before {
+  width: 100%;
+}
+
+.option input:checked ~ label {
+  color: rgb(255, 255, 255);
+}
+
+.option input:checked ~ label::before {
+  color: rgb(255, 255, 255);
+  /* color: rgb(255, 255, 255); */
+  background-color: #002effab;
+}
+
+.animate {
+  animation: slideLeft 1s forwards cubic-bezier(0.77, 0, 0.175, 1);
+  opacity: 0;
+  overflow: hidden;
+}
+.fa-circle-check,
+.fa-circle-arrow-right,
+.fa-circle-arrow-left {
+  font-size: 70px;
+}
+.fa-bookmark-slash,
+.fa-bookmark {
+  width: 70px;
+  outline: none;
+}
+#prev-button,
+#next-button {
+  outline: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.edits {
+  font-size: 30px;
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animateReverse {
+  animation: slideLeftReverse 1s forwards cubic-bezier(0.77, 0, 0.175, 1);
+  opacity: 1;
+}
+
+@keyframes slideLeftReverse {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1500px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .question {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .avatar {
+    display: none;
+  }
+  .show-section > fieldset {
+    width: 90%;
+  }
+  .question {
+    font-size: 40px;
+  }
+  .option {
+    width: 45%;
+  }
+  .option label {
+    font-size: 24px;
+  }
+  .option label::before {
+    margin-right: 25px;
+    font-size: 30px;
+  }
+}
+@media (min-width: 900px) {
+  .flaged-questions:hover {
+    left: 0;
+  }
+}
+@media (max-width: 900px) {
+  .flaged-questions {
+    position: unset;
+    height: max-content;
+    margin: auto;
+    width: 70%;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+  }
+}
+@media (max-width: 992px) {
+  .show-section > fieldset {
+    width: 100%;
+  }
+  .steps {
+    padding: 50px 20px;
+  }
+  .options {
+    margin-top: 40px;
+  }
+  .option label {
+    font-size: 18px;
+  }
+  .option label::before {
+    margin-right: 25px;
+    font-size: 24px;
+  }
+  .option {
+    width: 48%;
+    height: 70px;
+  }
+  .question {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .question {
+    font-size: 30px;
+    width: 100%;
+  }
+  .option label::before {
+    margin-right: 15px;
+    font-size: 24px;
+    width: 50px;
+  }
+  .nextPrev {
+    gap: 50px;
+  }
+  .nextPrev button {
+    font-size: 70px;
+  }
+  .stepCount {
+    font-size: 45px;
+  }
+}
+
+@media (max-width: 576px) {
+}
+
+@media (max-width: 480px) {
+  .question {
+    font-size: 20px;
+  }
+  .option {
+    width: 100%;
+  }
+  .nextPrev {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+  }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam Results</title>
+    <link rel="stylesheet" href="./css/result.css" />
+    <link href="./css/bootstrap.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Exam Results</h1>
+      <div class="card">
+        <div class="card-header bg-primary text-light h4">
+          Student Information
+        </div>
+        <div class="card-body">
+          <p class="card-title font-weight-bold" id="userName">Name:</p>
+          <p class="card-text font-weight-bold" id="userGrade">Grade:</p>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <h3 class="text-center mt-2">Wrong Answers</h3>
+        <table class="table table-striped result-table table-hover">
+          <thead class="">
+            <tr>
+              <th>Question</th>
+              <th>Correct Answer</th>
+              <th>Your Answer</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <script type="module" src="./js/result.js"></script>
+  </body>
+</html>

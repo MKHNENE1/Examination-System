@@ -37,7 +37,6 @@ export class Cookie {
         .filter((e) => e.includes(cname))
         .join("")
         .split("=");
-      // console.log(`Cookie Key: ${dta[0]}, Cookie Value: ${dta[1]}`);
       return true;
     } else {
       console.log("Cookie is not exists");
@@ -48,8 +47,5 @@ export class Cookie {
     let par = document.cookie.split(";");
     console.log(par.map((e) => e.split("=")));
   }
-  // let visit = parseInt(getCookie("Visit")) || 0;
-  // setCookie("Name", "Mohamed Halabia", new Date("6,10,2025"));
-  // setCookie("Gender", "Male", new Date("6,10,2025"));
-  // setCookie("Visit", ++visit, new Date("6,10,2025"));
+
 }

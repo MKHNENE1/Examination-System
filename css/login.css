@@ -1,47 +1,28 @@
-body {
+body,
+html {
+  height: 100%;
   margin: 0;
-  font-family: "Open Sans", sans-serif;
-  background-color: rgb(228, 227, 227);
 }
 
-/* .page-content {
-  background-image: url("../assets/bg-01.jpg");
+.bg {
+  /* background-image: url("../assets/bg-01.jpg");
   background-size: cover;
-} */
-body {
-  margin: 0;
-  font-family: "Open Sans", sans-serif;
+  background-position: center; */
+  height: 100%;
+  /* background-color: rgb(228, 227, 227); */
 }
 
-.form-v4-content {
-  max-width: 850px;
-  box-shadow: 0px 8px 20px0px rgba(0, 0, 0, 0.15);
-}
-
-.form-left p {
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 1.5;
-}
-.form-detail{
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-}
-.form-detail input {
-  border-radius: 5px;
-  border: 1px solid #e5e5e5;
-}
-.form-detail input:focus {
-  border-color: #53c83c;
-}
-
-.btn-register:hover {
-  color: darkblue;
-}
 .card {
-  background-color: #f0f0f0;
+  width: 90%;
+  height: max-content;
+  max-width: 400px;
+  /* margin: auto; */
+  padding: 20px;
+  /* background: #f0f0f0; */
+  border-radius: 10px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.815); */
 }
+
 .bgback {
   position: fixed;
   height: 100vh;

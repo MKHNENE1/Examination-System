@@ -1,35 +1,4 @@
-// jQuery.validator.setDefaults({
-//   debug: true,
-//   success: function (label) {
-//     label.attr("id", "valid");
-//   },
-// });
-// $("#myform").validate({
-//   rules: {
-//     password: "required",
-//     comfirm_password: {
-//       equalTo: "#password",
-//     },
-//   },
-//   messages: {
-//     first_name: {
-//       required: "Please enter a firstname",
-//     },
-//     last_name: {
-//       required: "Please enter a lastname",
-//     },
-//     your_email: {
-//       required: "Please provide an email",
-//     },
-//     password: {
-//       required: "Please enter a password",
-//     },
-//     comfirm_password: {
-//       required: "Please enter a password",
-//       equalTo: "Wrong Password",
-//     },
-//   },
-// });
+
 import { User } from "./user.js";
 import { Cookie } from "./cookies.js";
 
@@ -38,7 +7,6 @@ window.onload = function () {
     location.replace("login.html");
   }
 };
-// history.replaceState(null, "", "login.html");
 let submit = document.getElementById("submit");
 
 let firstName = document.getElementById("first_name"),
@@ -90,8 +58,7 @@ submit.addEventListener("click", (e) => {
     "Password is not identical"
   );
   if (errorList.length == 0) {
-    // User Data will insert here
-    // login.html?first-name=Mohamed&last-name=Halabia&email=mohamedhalabya11%40gmail.com&password=123456789
+
     e.preventDefault();
 
     let studint = new User(
@@ -106,23 +73,9 @@ submit.addEventListener("click", (e) => {
       new Date("6,10,2025")
     );
     Cookie.setCookie("userStatus", true, new Date("6,10,2025"));
-    // sessionStorage.setItem(
-    //   "userData",
-    //   JSON.stringify([studint, studint.getPassword()])
-    // );
-    // console.log(JSON.parse(sessionStorage.getItem("userData")));
-    // history.replaceState(null, "", "login.html");
-    location.replace(`login.html`);
-    // window.open("login.html", "_");
 
-    // user = new User(
-    //   firstName.value,
-    //   lastName.value,
-    //   email.value,
-    //   password.value
-    // );
-    // history.replaceState(null, null, null);
-    // location.replace(`index.html`);
+    location.replace(`login.html`);
+
   } else {
     e.preventDefault();
   }
@@ -209,140 +162,3 @@ document.addEventListener("mousemove", function (e) {
   curser.style.top = Y + "px";
 });
 
-// if (location.search) {
-//   history.replaceState(null, "", `index.html${location.search}`);
-//   console.log(location.search);
-
-//   firstName.value = location.search.split("&")[0].split("=")[1];
-//   lastName.value = location.search.split("&")[1].split("=")[1];
-//   email.value = decodeURIComponent(location.search.split("&")[2].split("=")[1]);
-//   password.value = decodeURIComponent(
-//     location.search.split("&")[3].split("=")[1]
-//   );
-
-//   validate(
-//     firstName,
-//     !/^[a-zA-Z]+$/.test(firstName.value),
-//     fnError,
-//     errorList,
-//     "First Name must be a string"
-//   );
-//   validate(
-//     lastName,
-//     !/^[a-zA-Z]+$/.test(lastName.value),
-//     lnError,
-//     errorList,
-//     "Last Name must be a string"
-//   );
-//   validate(
-//     email,
-//     !/^[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,}$/.test(email.value.toLowerCase()),
-//     eError,
-//     errorList,
-//     "Enter Valid Email"
-//   );
-//   validate(
-//     password,
-//     password.value.length < 8,
-//     pError,
-//     errorList,
-//     "Your Password Less than 8 characters"
-//   );
-//   if (errorList.length == 0) {
-//     let studint = new User(
-//       firstName.value,
-//       lastName.value,
-//       email.value,
-//       password.value
-//     );
-//     Cookie.setCookie(
-//       "userData",
-//       JSON.stringify([studint, studint.getPassword()]),
-//       new Date("6,10,2025")
-//     );
-//     Cookie.setCookie("userStatus", true, new Date("6,10,2025"));
-//     // sessionStorage.setItem(
-//     //   "userData",
-//     //   JSON.stringify([studint, studint.getPassword()])
-//     // );
-//     // console.log(JSON.parse(sessionStorage.getItem("userData")));
-//     // history.replaceState(null, "", "login.html");
-//     location.replace(`login.html`);
-//     // console.log("done");
-//     // window.open("login.html", "_");
-//   } else {
-//     window.close();
-//     // location.replace(`index.html`);
-//   }
-//   errorList = [];
-// }
-
-//////////////////////////////////////////////////////////////////////////////
-
-// if (location.search) {
-//   history.replaceState(null, "", `index.html${location.search}`);
-//   console.log(location.search);
-
-//   firstName.value = location.search.split("&")[0].split("=")[1];
-//   lastName.value = location.search.split("&")[1].split("=")[1];
-//   email.value = decodeURIComponent(location.search.split("&")[2].split("=")[1]);
-//   password.value = decodeURIComponent(
-//     location.search.split("&")[3].split("=")[1]
-//   );
-
-//   validate(
-//     firstName,
-//     !/^[a-zA-Z]+$/.test(firstName.value),
-//     fnError,
-//     errorList,
-//     "First Name must be a string"
-//   );
-//   validate(
-//     lastName,
-//     !/^[a-zA-Z]+$/.test(lastName.value),
-//     lnError,
-//     errorList,
-//     "Last Name must be a string"
-//   );
-//   validate(
-//     email,
-//     !/^[a-z0-9._%+-]+@[a-z.-]+\.[a-z]{2,}$/.test(email.value.toLowerCase()),
-//     eError,
-//     errorList,
-//     "Enter Valid Email"
-//   );
-//   validate(
-//     password,
-//     password.value.length < 8,
-//     pError,
-//     errorList,
-//     "Your Password Less than 8 characters"
-//   );
-//   if (errorList.length == 0) {
-//     let studint = new User(
-//       firstName.value,
-//       lastName.value,
-//       email.value,
-//       password.value
-//     );
-//     Cookie.setCookie(
-//       "userData",
-//       JSON.stringify([studint, studint.getPassword()]),
-//       new Date("6,10,2025")
-//     );
-//     Cookie.setCookie("userStatus", true, new Date("6,10,2025"));
-//     // sessionStorage.setItem(
-//     //   "userData",
-//     //   JSON.stringify([studint, studint.getPassword()])
-//     // );
-//     // console.log(JSON.parse(sessionStorage.getItem("userData")));
-//     // history.replaceState(null, "", "login.html");
-//     location.replace(`login.html`);
-//     // console.log("done");
-//     // window.open("login.html", "_");
-//   } else {
-//     window.close();
-//     // location.replace(`index.html`);
-//   }
-//   errorList = [];
-// }

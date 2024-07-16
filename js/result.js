@@ -10,7 +10,6 @@ let userName = document.getElementById("userName");
 let userEmail = document.getElementById("userGrade");
 userName.textContent += ` ${obj[0]["firstName"]} ${obj[0]["lastName"]}`;
 userEmail.textContent += ` ${obj[0]["degree"]}`;
-// document.querySelector("caption span").textContent = obj[0].degree;
 obj[0].result.forEach((e) => {
   let tbody = document.querySelector("tbody");
   let tr = document.createElement("tr");

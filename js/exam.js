@@ -22,26 +22,15 @@ async function getJsonData() {
         el.answer,
         false
       );
-      // var obj = {
-      //   title: el.question,
-      //   a: el.A,
-      //   b: el.B,
-      //   c: el.C,
-      //   d: el.D,
-      //   answer: el.answer,
-      //   flag: false,
-      // };
+
       questions.push(obj);
     });
-    // console.log(randomizeParentObjectValues(questions));
     questions = randomizeParentObjectValues(questions);
     displayQuestion(currentQuestionIndex);
     startTimer(examDuration);
     qsNumber.textContent = questions.length;
     currentQs.textContent = currentQuestionIndex + 1;
-    // console.log(questions);
-    // console.log(qsNumber.textContent);
-    // console.log(currentQs.textContent);
+
   } catch (error) {
     console.error("Error fetching questions:", error);
   }
@@ -92,7 +81,6 @@ function displayQuestion(index, option = false) {
   optionsDiv.appendChild(option4);
 
   var flagButton = document.createElement("button");
-  // flagButton.textContent = el.flag ? "Unflag" : "Flag";
   flagButton.classList.add(
     "fa-solid",
     "fa-bookmark",
@@ -119,21 +107,10 @@ function displayQuestion(index, option = false) {
         "space-between")
     : (document.querySelector(".navigation-buttons").style.justifyContent =
         "flex-end");
-  // if (option == true) {
-  //   document.getElementById("next-button").disabled = index in selectedAnswers;
-  // } else {
-  //   document.getElementById("next-button").disabled = !(
-  //     index in selectedAnswers
-  //   );
-  // }
-  // document.getElementById("next-button").innerHTML =
-  //   index === questions.length - 1
-  //     ? '<i class="fa-solid fa-circle-check"></i>'
-  //     : '<i class="fa-solid fa-circle-arrow-right"></i>';
+
   if (index === questions.length - 1) {
     document.getElementById("next-button").innerHTML =
       '<i class="fa-solid fa-circle-check"></i>';
-    // console.log("tesst");
     document
       .getElementById("next-button")
       .classList.replace("text-primary", "text-success");
@@ -143,13 +120,11 @@ function displayQuestion(index, option = false) {
     document
       .getElementById("next-button")
       .classList.replace("text-success", "text-primary");
-    // console.log(document.getElementById("next-button").innerHTML);
   }
   var radioButtons = optionsDiv.querySelectorAll('input[type="radio"]');
   radioButtons.forEach((radio) => {
     radio.addEventListener("change", () => {
       selectedAnswers[index] = radio.value;
-      // document.getElementById("next-button").disabled = false;
     });
 
     if (selectedAnswers[index] && radio.value === selectedAnswers[index]) {
@@ -185,9 +160,7 @@ function showNextQuestion() {
   } else {
     userData[0].result = [];
     showResults();
-    // console.log(userData[0].grades);
   }
-  // console.log(questions.length);
 }
 function showPreviousQuestion() {
   if (currentQuestionIndex > 0) {
@@ -204,11 +177,9 @@ function toggleFlagQuestion(index) {
   if (val.classList.contains("fa-bookmark")) {
     val.classList.remove("fa-bookmark");
     val.classList.add("fa-bookmark-slash");
-    // document.getElementById("next-button").disabled = false;
   } else {
     val.classList.add("fa-bookmark");
     val.classList.remove("fa-bookmark-slash");
-    // document.getElementById("next-button").disabled = true;
   }
 
   if (document.getElementById("alerts-container").children.length !== 0) {
@@ -230,7 +201,6 @@ function updateFlaggedQuestionsSidebar() {
       card.classList.add("flagged-question-card");
       card.classList.add("alert");
       card.classList.add("alert-warning");
-      // card.setAttribute("role", "alert");
       questionString.textContent = question.title;
       card.innerHTML += `<i class="fa-solid fa-flag"></i>`;
       card.addEventListener("click", () => {
@@ -264,19 +234,14 @@ function startTimer(duration) {
 
 function showResults() {
   clearInterval(timer);
-  // window.removeEventListener("beforeunload", stopReload);
-  // document.getElementById("results-screen").classList.remove("d-none");
-  // var resultsDiv = document.getElementById("results");
+
   var correctAnswers = 0;
-  // console.log(questions.length);
   questions.forEach((question, index) => {
     var selectedAnswerLabel = selectedAnswers[index];
     var correctAnswerLabel = question.answer;
-    // console.log(selectedAnswerLabel, correctAnswerLabel);
     if (selectedAnswerLabel === correctAnswerLabel) {
       correctAnswers++;
     } else {
-      // userData[0].grades.push(`${question.title} :  ${selectedAnswerLabel}`);
       userData[0].result.push([
         question.title,
         correctAnswerLabel,
@@ -284,19 +249,11 @@ function showResults() {
       ]);
     }
   });
-  // console.log(correctAnswers, questions.length);
 
-  // resultsDiv.textContent = `You answered ${correctAnswers} out of ${questions.length} questions correctly.`;
-  // resultsDiv.textContent = `${correctAnswers}%`;
   userData[0].degree = `${((correctAnswers / questions.length) * 100).toFixed(
     1
   )}%`;
-  // console.log(Object.keys(selectedAnswers).length == questions.length);
-  // console.log(questions.length);
-  // console.log(questions.length);
-  // console.log(Math.fround(correctAnswers / questions.length) * 100);
-  // console.log(userData[0].grads);
-  // console.log((userData[0].degree = correctAnswers));
+
   if (Object.keys(selectedAnswers).length == questions.length) {
     window.onbeforeunload = null;
     Cookie.setCookie(
@@ -324,9 +281,7 @@ window.onload = function () {
   document
     .getElementById("next-button")
     .addEventListener("click", showNextQuestion);
-  // document.getElementById("retry-button").addEventListener("click", () => {
-  //   location.reload();
-  // });
+
   getJsonData();
 };
 
@@ -338,11 +293,3 @@ window.onbeforeunload = function (e) {
   return "Your Answers is not submited and will be lost";
 };
 
-// window.addEventListener("beforeunload", (e) => {
-//   e.preventDefault();
-//   e.returnValue = "Changes you made may not be saved";
-// });
-// function stopReload() {
-// }
-// window.addEventListener("load", stopReload);
-1;

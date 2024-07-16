@@ -248,20 +248,13 @@ function startTimer(duration) {
   var timerBar = document.getElementById("progressBar");
   var minutes, seconds;
   let bar = duration;
-
   timer = setInterval(function () {
     minutes = parseInt(duration / 60, 10);
     seconds = parseInt(duration % 60, 10);
-
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
-
     timerDiv.textContent = minutes + ":" + seconds;
-    // var progressPercentage = (duration - duration) / 60;
     timerBar.style.width = ((bar - duration) / bar) * 100 + "%";
-    // timerBar.textContent = Math.floor(((bar - duration) / bar) * 100) + "%";
-    // console.log(progressPercentage);
-    // console.log(((bar - duration) / bar) * 100);
     if (--duration < 0) {
       clearInterval(timer);
       showTimeoutPage();

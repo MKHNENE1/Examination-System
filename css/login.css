@@ -9,7 +9,7 @@ html {
   background-size: cover;
   background-position: center; */
   height: 100%;
-  background-color: rgb(228, 227, 227);
+  /* background-color: rgb(228, 227, 227); */
 }
 
 .card {
@@ -18,7 +18,69 @@ html {
   max-width: 400px;
   /* margin: auto; */
   padding: 20px;
-  background: rgb(255, 255, 255);
+  /* background: #f0f0f0; */
   border-radius: 10px;
   /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.815); */
+}
+
+.bgback {
+  position: fixed;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+}
+.bgback .row1 {
+  display: inline-flex;
+  margin-top: calc(calc(max(9vw, 11vh)) * -0.32);
+  margin-left: calc(calc(max(9vw, 11vh)) * -0.5);
+}
+.bgback .row1 .hexagon {
+  position: relative;
+  width: calc(max(9vw, 11vh));
+  height: calc(calc(max(9vw, 11vh)) * 1.1);
+  margin: calc(calc(max(9vw, 11vh)) * 0.04) calc(calc(max(9vw, 11vh)) * 0.02);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  /* background: linear-gradient(
+          90deg,
+          rgba(25, 25, 25, 0.7) 50%,
+          rgba(10, 10, 10, 0.85) 50%
+        );
+        background: #181a1b; */
+  background: white;
+  text-align: center;
+  color: rgba(15, 15, 15, 1);
+  line-height: calc(calc(max(9vw, 11vh)) * 1.1);
+  font-size: 2vw;
+  transition: 1s;
+}
+.blank {
+  background: transparent;
+}
+.bgback .row1:nth-child(even) {
+  margin-left: calc(calc(max(9vw, 11vh)) * 0.02);
+}
+.curser {
+  position: absolute;
+  width: calc(calc(max(9vw, 11vh)) * 1.5);
+  height: calc(calc(max(9vw, 11vh)) * 1.5);
+  border-radius: 50%;
+  animation: anim 2s linear infinite;
+  visibility: hidden;
+  transform: translate(-50%, -50%);
+}
+@keyframes anim {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+body:hover .curser {
+  background: radial-gradient(
+    circle,
+    rgb(0, 76, 255) 0%,
+    rgba(0, 255, 0, 0) 70%
+  );
+  visibility: visible;
 }

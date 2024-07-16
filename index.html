@@ -37,10 +37,10 @@
             recusandae magni odio! about the form.
           </p>
         </div>
-        <div class="form-detail col-12 col-md-7 p-4">
+        <div class="form-detail col-12 col-md-7 p-4 d-flex flex-column">
           <h2 class="text-danger">Register Form</h2>
           <br />
-          <form action="" method="get">
+          <form action="" method="get" class="d-flex flex-column flex-grow-1">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="first_name" class="text-dark font-weight-bolder"
@@ -145,13 +145,15 @@
                 id="rp-error"
               ></span>
             </div>
-            <button
-              type="submit"
-              id="submit"
-              class="btn btn-register fw-bold text-light rounded-3 bg-danger"
-            >
-              Register
-            </button>
+            <div class="mt-auto">
+              <button
+                type="submit"
+                id="submit"
+                class="btn btn-register fw-bold text-light rounded-3 bg-danger"
+              >
+                Register
+              </button>
+            </div>
           </form>
         </div>
       </div>

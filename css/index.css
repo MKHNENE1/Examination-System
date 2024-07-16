@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
+  background-color: rgb(228, 227, 227);
 }
 
 /* .page-content {
@@ -22,6 +23,11 @@ body {
   font-weight: 300;
   line-height: 1.5;
 }
+.form-detail{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
 .form-detail input {
   border-radius: 5px;
   border: 1px solid #e5e5e5;
@@ -33,4 +39,3 @@ body {
 .btn-register:hover {
   color: darkblue;
 }
-

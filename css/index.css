@@ -4,7 +4,6 @@ body {
   background-color: rgb(228, 227, 227);
 }
 
-
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
@@ -20,7 +19,7 @@ body {
   font-weight: 300;
   line-height: 1.5;
 }
-.form-detail{
+.form-detail {
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -52,7 +51,7 @@ body {
 }
 .bgback .row1 .hexagon {
   position: relative;
-  background-color: black;
+  background-color: white;
   width: calc(max(9vw, 11vh));
   height: calc(calc(max(9vw, 11vh)) * 1.1);
   margin: calc(calc(max(9vw, 11vh)) * 0.04) calc(calc(max(9vw, 11vh)) * 0.02);

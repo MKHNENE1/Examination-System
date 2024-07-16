@@ -305,6 +305,7 @@ function showResults() {
   // console.log(userData[0].grads);
   // console.log((userData[0].degree = correctAnswers));
   if (Object.keys(selectedAnswers).length == questions.length) {
+    window.onbeforeunload = null;
     Cookie.setCookie(
       "userData",
       JSON.stringify(userData),
@@ -334,6 +335,14 @@ window.onload = function () {
   //   location.reload();
   // });
   getJsonData();
+};
+
+window.onbeforeunload = function (e) {
+  e = e || window.event;
+  if (e) {
+    e.returnValue = "Your Answers is not submited and will be lost";
+  }
+  return "Your Answers is not submited and will be lost";
 };
 
 // window.addEventListener("beforeunload", (e) => {

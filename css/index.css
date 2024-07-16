@@ -52,6 +52,7 @@ body {
 }
 .bgback .row1 .hexagon {
   position: relative;
+  background-color: black;
   width: calc(max(9vw, 11vh));
   height: calc(calc(max(9vw, 11vh)) * 1.1);
   margin: calc(calc(max(9vw, 11vh)) * 0.04) calc(calc(max(9vw, 11vh)) * 0.02);
